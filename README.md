@@ -42,6 +42,53 @@ npm run ios
 yarn ios
 ```
 
+### Detox
+This project contains tests using [Detox](https://github.com/wix/Detox)
+A compiled version of the app is needed in order to run these tests. There are two ways of running these tests:
+
+* With a dev env, using the latest changes before building. This is useful to implement tests while developing.
+
+In order to make this work we need to build the debug app, start development server in e2e mode and run tests in debug mode:
+
+First you need to get the detox cli
+```
+npm install detox-cli --global
+```
+
+Then, you have to know in which simulator you want to launch the tests by editing .detox.js file.
+
+devices: {
+simulator: {
+device: {
+type: 'YOUR_IOS_DEVICE'
+}
+},
+emulator: {
+device: {
+avdName: 'YOUR_ANDROID_DEVICE',
+}
+}
+},
+
+Launch your device and the development server
+```bash
+MY_APP_MODE=mocked npx react-native start
+```
+
+* With the application built. This is useful in a CI/CD pipeline, to test that the app is working correctly.
+
+With this approach, the app will not need the development server, since the code will be already compiled.
+
+```bash
+# Android debug tests
+npm run e2e:build:android:debug
+npm run e2e:run:android:debug
+
+# iOS debug tests
+npm run e2e:build:ios:debug
+npm run e2e:run:ios:debug
+```
+
 If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
