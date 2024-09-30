@@ -12,7 +12,7 @@ import {
   ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
+  Text, TouchableOpacity,
   useColorScheme,
   View,
 } from 'react-native';
@@ -91,6 +91,10 @@ function App(): React.JSX.Element {
             Read the docs to discover what to do next:
           </Section>
           <LearnMoreLinks />
+
+          <TouchableOpacity testID="Button" onPress={() => alert('OK')}>
+            <Text>TEST</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
