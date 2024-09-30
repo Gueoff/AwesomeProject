@@ -26,3 +26,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.4.0'
+
+      - name: Start RN Package
+        run: |
+          npm run start
+
+      - name: Build detox
+        run: |
+          npm run e2e:build:android:release
+
+      - name: Run detox
+        run: |
+          npm run e2e:run:android:release
