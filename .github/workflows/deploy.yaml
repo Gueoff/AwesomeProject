@@ -1,0 +1,29 @@
+name: Deploy
+on:
+  checks: write
+  contents: write
+
+jobs:
+  deploy:
+    # runs-on: [self-hosted, dedicated]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby 2.7.5
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.5
+
+      - name: install
+        run: |
+          npm i
+
+      - name: Install Dependencies
+        run: gem install bundler && bundle install
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.4.0'
