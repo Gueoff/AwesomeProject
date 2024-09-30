@@ -1,7 +1,6 @@
 name: Deploy
-on:
-  checks: write
-  contents: write
+
+on: workflow_dispatch
 
 jobs:
   deploy:
