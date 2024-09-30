@@ -5,7 +5,7 @@ on: workflow_dispatch
 jobs:
   deploy:
     # runs-on: [self-hosted, dedicated]
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, dedicated]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
