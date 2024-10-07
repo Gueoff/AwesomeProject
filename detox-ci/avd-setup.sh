@@ -1,22 +1,11 @@
-# in my .zshrc file
-# export ANDROID_HOME=/Users/geoffreydesbrosses/Library/Android/sdk
-# path=("${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools" $path)
-# export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
-
-
 # Install the emulator tool
-sdkmanager --install emulator
+$ANDROID_HOME/tools/bin/sdkmanager --install emulator
 
 # Install an AOSP image that would later be used as the AVD's OS
-sdkmanager --install "system-images;android-29;default;x86_64"
+$ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-35;google_apis;arm64-v8a"
 
-# Accept all licenses...
-sdkmanager --licenses
-# To do that automatically in a script, try this:
-yes | sdkmanager --licenses
+yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
 
 # Create an AVD with the image we've previously installed
-avdmanager --verbose create avd --force --name Pixel_4_API_29 --abi x86_64 --device "pixel" --package "system-images;android-29;default;x86_64"
-
-# (optional) Review your brand new AVD:
-avdmanager list avd
+$ANDROID_HOME/tools/bin/avdmanager --verbose create avd --force --name KDS_API_35 --abi "arm64-v8a" --device "medium_tablet" --package "system-images;android-35;google_apis;arm64-v8a"
+$ANDROID_HOME/tools/bin/avdmanager list avd
